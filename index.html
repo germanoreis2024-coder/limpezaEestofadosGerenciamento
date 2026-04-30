@@ -1,416 +1,190 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> | Sistema Profissional para Limpeza de Estofados</title>
-  <meta name="description" content="Conheça o Sistema para Limpeza de Estofados: sistema online para empresas de limpeza de estofados, sofás, colchões e móveis." />
+  <title>ERP para Limpeza de Estofados | Sistema completo para sua operação</title>
+  <meta name="description" content="Sistema ERP online para empresas de limpeza de estofados, sofás, colchões e móveis. Agenda, clientes, ordens de serviço, financeiro, relatórios e equipe em um só lugar." />
+  <meta name="theme-color" content="#0ea5e9" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f5f8fb;
-      --surface: #ffffff;
-      --surface-2: #edf6fb;
-      --text: #071426;
-      --muted: #5b6f8e;
-      --line: #dde7f0;
-      --primary: #0ea5d3;
-      --primary-dark: #067aa3;
-      --primary-soft: #e6f8fd;
-      --green: #12b76a;
-      --red: #ef4444;
-      --yellow: #f59e0b;
-      --sidebar: #151c25;
-      --shadow: 0 18px 50px rgba(8, 35, 60, .10);
-      --radius: 22px;
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 99;
-      backdrop-filter: blur(18px);
-      background: rgba(245, 248, 251, .82);
-      border-bottom: 1px solid rgba(221, 231, 240, .8);
-    }
-    .nav {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
-    .logo {
-      width: 44px; height: 44px;
-      display: grid; place-items: center;
-      border-radius: 14px;
-      color: white;
-      background: linear-gradient(135deg, #18b7e3, #087ca8);
-      box-shadow: 0 12px 24px rgba(14, 165, 211, .30);
-      font-size: 22px;
-    }
-    .brand span small { display: block; color: var(--muted); font-weight: 500; font-size: 12px; margin-top: -3px; }
-    .links { display: flex; align-items: center; gap: 22px; color: #435875; font-size: 14px; font-weight: 600; }
-    .links a:hover { color: var(--primary-dark); }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 46px;
-      padding: 0 20px;
-      border-radius: 14px;
-      border: 1px solid transparent;
-      font-weight: 800;
-      transition: .2s ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-primary { background: var(--primary); color: white; box-shadow: 0 14px 30px rgba(14, 165, 211, .28); }
-    .btn-primary:hover { transform: translateY(-2px); background: var(--primary-dark); }
-    .btn-outline { border-color: var(--line); background: white; color: var(--text); }
-    .btn-outline:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary-dark); }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 76px 0 52px;
-    }
-    .hero:before {
-      content: "";
-      position: absolute;
-      inset: -180px -120px auto auto;
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(14,165,211,.26), transparent 65%);
-      pointer-events: none;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid #cbeef8;
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: var(--primary-soft);
-      font-size: 13px;
-      font-weight: 800;
-    }
-    h1, h2, h3 { line-height: 1.1; margin: 0; letter-spacing: -.03em; }
-    h1 { font-size: clamp(38px, 5vw, 68px); margin-top: 22px; }
-    h1 strong { color: var(--primary-dark); }
-    .lead { font-size: 18px; color: var(--muted); margin: 22px 0 28px; max-width: 650px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
-    .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 650px; }
-    .trust-card {
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .trust-card b { display: block; color: var(--text); font-size: 18px; }
-
-    .mock-window {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .mock-top {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 18px;
-      border-bottom: 1px solid var(--line);
-      background: #fbfdff;
-    }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: #d1dbe8; }
-    .mock-app { display: grid; grid-template-columns: 170px 1fr; min-height: 495px; }
-    .mock-sidebar { background: var(--sidebar); color: #cdd8e6; padding: 18px 14px; }
-    .mock-brand { display: flex; align-items: center; gap: 10px; color: white; font-weight: 800; margin-bottom: 26px; }
-    .mock-brand .mini-logo { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: var(--primary); }
-    .mock-menu { display: grid; gap: 8px; }
-    .mock-menu span { display: flex; gap: 8px; padding: 10px; border-radius: 11px; font-size: 12px; font-weight: 700; }
-    .mock-menu span.active { color: #12bff0; background: #263241; }
-    .mock-content { padding: 20px; background: #f8fbfe; }
-    .mock-title { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 16px; }
-    .mock-title h3 { font-size: 22px; }
-    .fake-btn { height: 36px; padding: 0 14px; display: inline-flex; align-items: center; border-radius: 12px; background: var(--primary); color: white; font-size: 12px; font-weight: 800; }
-    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
-    .kpi { background: white; border: 1px solid var(--line); border-top: 4px solid #4cc5e3; padding: 13px; border-radius: 16px; }
-    .kpi small { color: var(--muted); display: block; font-weight: 700; }
-    .kpi b { display: block; font-size: 20px; margin-top: 5px; }
-    .blurred { filter: blur(4px); user-select: none; opacity: .85; }
-    .mock-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 14px; }
-    .panel { background: white; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
-    .panel-head { padding: 16px 18px; border-bottom: 1px solid var(--line); font-weight: 800; }
-    .agenda-item, .transaction { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
-    .avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary-dark); font-weight: 800; flex: 0 0 auto; }
-    .line-title { font-weight: 800; }
-    .line-muted { color: var(--muted); font-size: 13px; }
-    .tag { padding: 6px 10px; border-radius: 999px; background: #dcfce7; color: #079455; font-size: 12px; font-weight: 800; }
-    .value-pos { color: var(--green); font-weight: 900; }
-    .value-neg { color: var(--red); font-weight: 900; }
-    .donut-wrap { min-height: 233px; display: grid; place-items: center; padding: 26px; }
-    .donut {
-      width: 170px; height: 170px; border-radius: 50%;
-      background: conic-gradient(var(--green) 0 70%, var(--yellow) 70% 82%, var(--primary) 82% 100%);
-      position: relative;
-    }
-    .donut:after { content: ""; position: absolute; inset: 42px; border-radius: 50%; background: white; }
-
-    section { padding: 76px 0; }
-    .section-head { max-width: 760px; margin: 0 auto 34px; text-align: center; }
-    .section-head .eyebrow { margin-bottom: 14px; }
-    h2 { font-size: clamp(30px, 3.8vw, 48px); }
-    .section-head p { color: var(--muted); font-size: 17px; margin: 14px 0 0; }
-
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .feature-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(8, 35, 60, .04);
-    }
-    .feature-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--primary-soft); color: var(--primary-dark); font-size: 22px; margin-bottom: 18px; }
-    .feature-card h3 { font-size: 19px; margin-bottom: 10px; }
-    .feature-card p { color: var(--muted); margin: 0; }
-
-    .demo-section { background: #eef6fb; border-block: 1px solid var(--line); }
-    .modules { display: grid; grid-template-columns: .95fr 1.05fr; gap: 26px; align-items: start; }
-    .module-list { display: grid; gap: 12px; }
-    .module {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      display: grid;
-      grid-template-columns: 46px 1fr;
-      gap: 14px;
-    }
-    .module b { display: block; margin-bottom: 4px; }
-    .module span { color: var(--muted); font-size: 14px; }
-    .screen-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
-    .screen-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; gap: 12px; }
-    .search { height: 44px; border: 1px solid var(--line); border-radius: 13px; padding: 0 14px; color: var(--muted); background: #f9fbfd; flex: 1; max-width: 360px; font-size: 14px; }
-    .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .client-card { border: 1px solid var(--line); border-radius: 18px; padding: 18px; background: #fff; }
-    .client-card .top { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; }
-    .client-card ul { padding: 0; margin: 0; list-style: none; color: var(--muted); font-size: 13px; display: grid; gap: 6px; }
-    .safe-note { margin-top: 18px; padding: 14px 16px; border: 1px dashed #9bd8ea; border-radius: 16px; color: var(--primary-dark); background: #f0fbff; font-weight: 700; font-size: 14px; }
-
-    .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
-    .step { background: white; border: 1px solid var(--line); border-radius: 20px; padding: 22px; position: relative; }
-    .step:before {
-      counter-increment: step;
-      content: counter(step);
-      width: 34px; height: 34px;
-      display: grid; place-items: center;
-      border-radius: 50%;
-      background: var(--primary);
-      color: white;
-      font-weight: 900;
-      margin-bottom: 16px;
-    }
-    .step h3 { font-size: 18px; margin-bottom: 8px; }
-    .step p { color: var(--muted); margin: 0; font-size: 14px; }
-
-    .pricing-card {
-      max-width: 940px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr .9fr;
-      gap: 0;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .pricing-left { padding: 34px; }
-    .pricing-left p { color: var(--muted); }
-    .checklist { display: grid; gap: 12px; margin: 24px 0 0; padding: 0; list-style: none; }
-    .checklist li { display: flex; gap: 10px; align-items: flex-start; color: #334862; font-weight: 600; }
-    .checklist li:before { content: "✓"; color: var(--green); font-weight: 900; }
-    .pricing-right { padding: 34px; background: linear-gradient(135deg, #0ea5d3, #075985); color: white; }
-    .pricing-right h3 { font-size: 25px; }
-    .price { font-size: 42px; font-weight: 900; letter-spacing: -.04em; margin: 18px 0 6px; }
-    .pricing-right p { color: rgba(255,255,255,.82); }
-    .pricing-right .btn { width: 100%; background: white; color: #075985; margin-top: 20px; }
-
-    .cta {
-      padding: 76px 0 90px;
-      text-align: center;
-      color: white;
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, .35), transparent 30%), linear-gradient(135deg, #0b1723, #0b4f6c);
-    }
-    .cta h2 { max-width: 840px; margin: 0 auto 16px; }
-    .cta p { color: rgba(255,255,255,.76); max-width: 710px; margin: 0 auto 28px; font-size: 17px; }
-    .cta .btn-outline { background: transparent; color: white; border-color: rgba(255,255,255,.22); }
-
-    footer { padding: 28px 0; background: #101722; color: #b7c6d8; font-size: 14px; }
-    .footer-grid { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-
-
-    /* Efeito de entrada: divs vindo de baixo para cima com fade-in */
-    .reveal-up {
-      opacity: .70;
-      transform: translateY(38px);
-      filter: blur(2px);
-      transition: opacity .85s ease, transform .85s ease, filter .85s ease;
-      will-change: opacity, transform, filter;
-    }
-    .reveal-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-    .reveal-delay-1 { transition-delay: .08s; }
-    .reveal-delay-2 { transition-delay: .16s; }
-    .reveal-delay-3 { transition-delay: .24s; }
-    .reveal-delay-4 { transition-delay: .32s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal-up {
-        opacity: 1;
-        transform: none;
-        filter: none;
-        transition: none;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
+              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490',
+              800: '#155e75', 900: '#164e63'
+            },
+            ink: '#071426'
+          },
+          boxShadow: {
+            soft: '0 24px 70px rgba(8, 35, 60, .12)',
+            glow: '0 24px 70px rgba(6, 182, 212, .22)'
+          }
+        }
       }
     }
-    @media (max-width: 1000px) {
-      .hero-grid, .modules, .pricing-card { grid-template-columns: 1fr; }
-      .features { grid-template-columns: repeat(2, 1fr); }
-      .process { grid-template-columns: repeat(2, 1fr); }
-      .mock-app { grid-template-columns: 1fr; }
-      .mock-sidebar { display: none; }
-      .links { display: none; }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .reveal {
+      opacity: .70;
+      transform: translateY(42px);
+      transition: opacity .85s ease, transform .85s cubic-bezier(.16, 1, .3, 1);
+      will-change: opacity, transform;
     }
-    @media (max-width: 680px) {
-      .hero { padding-top: 46px; }
-      .trust, .kpis, .mock-grid, .features, .cards-grid, .process { grid-template-columns: 1fr; }
-      .mock-title, .screen-head { align-items: flex-start; flex-direction: column; }
-      .search { width: 100%; max-width: none; }
-      .nav { height: 68px; }
-      .brand span { font-size: 14px; }
-      .brand span small { display: none; }
-      section { padding: 54px 0; }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .glass { background: rgba(255,255,255,.78); backdrop-filter: blur(18px); }
+    .gradient-text { background: linear-gradient(135deg, #0891b2 0%, #0f172a 58%, #16a34a 110%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .dashboard-grid { background-image: linear-gradient(rgba(15,23,42,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.05) 1px, transparent 1px); background-size: 26px 26px; }
+    .float-slow { animation: floatSlow 5.5s ease-in-out infinite; }
+    .float-delay { animation: floatSlow 6.5s ease-in-out infinite; animation-delay: -2s; }
+    @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; }
+      .float-slow, .float-delay { animation: none; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
-<body>
-  <header class="topbar">
-    <div class="container nav">
-      <a href="#inicio" class="brand" aria-label="Sistema para Limpeza de Estofados">
-        <div class="logo">✦</div>
-        <span>Sistema para Limpeza de Estofados <small>Sistema para limpeza de estofados</small></span>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-cyan-200 selection:text-slate-950">
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400 to-brand-700 text-2xl text-white shadow-glow">✦</div>
+        <div>
+          <strong class="block text-lg font-black tracking-tight">ERP para Empresas de Limpeza de Estofados</strong>
+          <span class="block text-xs font-medium text-slate-500">Sistema para limpeza de estofados</span>
+        </div>
       </a>
-      <nav class="links" aria-label="Menu principal">
-        <a href="#funcionalidades">Funcionalidades</a>
-        <a href="#demonstracao">Demonstração</a>
-        <a href="#fluxo">Como funciona</a>
-        <a href="#contato">Contato</a>
+      <nav class="hidden items-center gap-8 text-sm font-semibold text-slate-600 lg:flex">
+        <a class="hover:text-brand-700" href="#modulos">Módulos</a>
+        <a class="hover:text-brand-700" href="#funciona">Como funciona</a>
+        <a class="hover:text-brand-700" href="#beneficios">Benefícios</a>
+        <a class="hover:text-brand-700" href="#demonstracao">Demonstração</a>
       </nav>
-      <a class="btn btn-primary" href="#contato">Solicitar demonstração</a>
+      <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20conhecer%20o%20ERP%20para%20minha%20empresa%20de%20limpeza%20de%20estofados." class="hidden rounded-2xl bg-slate-950 px-5 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-brand-700 md:inline-flex">Solicitar demonstração</a>
+      <button id="menuBtn" class="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-white lg:hidden" aria-label="Abrir menu">
+        <span class="text-2xl">☰</span>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-5 py-4 lg:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 text-sm font-bold text-slate-700">
+        <a href="#modulos">Módulos</a>
+        <a href="#funciona">Como funciona</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#demonstracao">Demonstração</a>
+        <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20conhecer%20o%20ERP%20para%20minha%20empresa%20de%20limpeza%20de%20estofados." class="mt-2 rounded-2xl bg-slate-950 px-5 py-3 text-center text-white">Solicitar demonstração</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">ERP online para empresas de limpeza de sofás, colchões e móveis</span>
-          <h1>Organize sua empresa de limpeza com <strong>agenda, OS, financeiro e relatórios</strong> em um só painel.</h1>
-          <p class="lead">Uma solução online para empresas de higienização substituírem caderno, planilha e controles soltos por uma gestão profissional, acessível pelo celular, tablet ou computador.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#demonstracao">Ver demonstração visual</a>
-            <a class="btn btn-outline" href="#funcionalidades">Conhecer recursos</a>
+  <main id="inicio" class="overflow-hidden">
+    <section class="relative isolate px-5 py-16 sm:py-20 lg:px-8 lg:py-24">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(34,211,238,.24),transparent_32%),radial-gradient(circle_at_85%_25%,rgba(22,163,74,.13),transparent_30%)]"></div>
+      <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.02fr_.98fr]">
+        <div class="reveal">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-sm font-extrabold text-brand-800">
+            <span class="grid h-6 w-6 place-items-center rounded-full bg-brand-600 text-white">✓</span>
+            Gestão completa para empresas de higienização
           </div>
-          <div class="trust">
-            <div class="trust-card"><b>100% online</b>Acesso sem instalação</div>
-            <div class="trust-card"><b>PWA mobile</b>Funciona como app</div>
-            <div class="trust-card"><b>Dados protegidos</b>Controle por usuário</div>
+          <h1 class="max-w-3xl text-4xl font-black leading-tight tracking-[-.04em] text-slate-950 sm:text-5xl lg:text-6xl">
+            Profissionalize sua empresa com um ERP feito para <span class="gradient-text">limpeza de estofados.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            Controle clientes, agenda, ordens de serviço, pagamentos, financeiro e relatórios em uma única plataforma online. Menos improviso, mais organização e mais oportunidades de venda recorrente.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20quero%20ver%20uma%20demonstra%C3%A7%C3%A3o%20do%20ERP%20para%20limpeza%20de%20estofados." class="inline-flex items-center justify-center rounded-2xl bg-brand-600 px-7 py-4 text-base font-black text-white shadow-glow transition hover:-translate-y-1 hover:bg-brand-700">Quero conhecer o sistema</a>
+            <a href="#modulos" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-7 py-4 text-base font-black text-slate-950 shadow-sm transition hover:-translate-y-1 hover:border-brand-300">Ver funcionalidades</a>
+          </div>
+          <div class="mt-8 grid max-w-2xl grid-cols-3 gap-3">
+            <div class="rounded-3xl border border-white bg-white/80 p-4 shadow-sm">
+              <strong class="block text-2xl font-black text-slate-950">100%</strong>
+              <span class="text-xs font-semibold text-slate-500">online e responsivo</span>
+            </div>
+            <div class="rounded-3xl border border-white bg-white/80 p-4 shadow-sm">
+              <strong class="block text-2xl font-black text-slate-950">6 meses</strong>
+              <span class="text-xs font-semibold text-slate-500">lembrete de recompra</span>
+            </div>
+            <div class="rounded-3xl border border-white bg-white/80 p-4 shadow-sm">
+              <strong class="block text-2xl font-black text-slate-950">1 painel</strong>
+              <span class="text-xs font-semibold text-slate-500">para toda operação</span>
+            </div>
           </div>
         </div>
 
-        <div class="mock-window" aria-label="Prévia do dashboard do sistema">
-          <div class="mock-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-          <div class="mock-app">
-            <aside class="mock-sidebar">
-              <div class="mock-brand"><span class="mini-logo">✦</span> Gestão ERP</div>
-              <div class="mock-menu">
-                <span class="active">▦ Dashboard</span>
-                <span>👥 Clientes</span>
-                <span>📅 Agenda</span>
-                <span>🧾 Ordens de Serviço</span>
-                <span>💲 Financeiro</span>
-                <span>📊 Relatórios</span>
-              </div>
-            </aside>
-            <div class="mock-content">
-              <div class="mock-title">
-                <div><h3>Dashboard</h3><div class="line-muted">Resumo mensal da operação</div></div>
-                <span class="fake-btn">+ Nova OS</span>
-              </div>
-              <div class="kpis">
-                <div class="kpi"><small>Clientes</small><b>+120</b></div>
-                <div class="kpi"><small>Receita</small><b class="blurred">R$ 0.000</b></div>
-                <div class="kpi"><small>Despesas</small><b class="blurred">R$ 0.000</b></div>
-                <div class="kpi"><small>Lucro</small><b class="blurred">R$ 0.000</b></div>
-              </div>
-              <div class="mock-grid">
-                <div class="panel">
-                  <div class="panel-head">Agenda de hoje</div>
-                  <div class="agenda-item">
-                    <div style="display:flex;align-items:center;gap:12px"><span class="avatar">C</span><div><div class="line-title">Atendimento Residencial</div><div class="line-muted">Sofá + colchão • 09:00</div></div></div>
-                    <span class="tag">Agendado</span>
-                  </div>
-                  <div class="agenda-item">
-                    <div style="display:flex;align-items:center;gap:12px"><span class="avatar">A</span><div><div class="line-title">Atendimento Corporativo</div><div class="line-muted">Impermeabilização • 14:00</div></div></div>
-                    <span class="tag">Finalizado</span>
+        <div class="reveal relative">
+          <div class="absolute -left-6 top-10 z-10 hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-soft xl:block float-slow">
+            <p class="text-xs font-bold text-slate-500">Agenda de hoje</p>
+            <p class="mt-1 text-lg font-black text-slate-950">8 atendimentos</p>
+            <p class="text-xs font-semibold text-emerald-600">Roteiro organizado</p>
+          </div>
+          <div class="absolute -right-4 bottom-10 z-10 hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-soft xl:block float-delay">
+            <p class="text-xs font-bold text-slate-500">Lucro estimado</p>
+            <p class="mt-1 text-lg font-black text-emerald-600">R$ •••••</p>
+            <p class="text-xs font-semibold text-slate-500">valores protegidos</p>
+          </div>
+
+          <div class="rounded-[2rem] border border-slate-200 bg-white p-3 shadow-soft">
+            <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 dashboard-grid bg-slate-50">
+              <div class="flex items-center justify-between border-b border-slate-200 bg-slate-950 px-5 py-4 text-white">
+                <div class="flex items-center gap-3">
+                  <div class="h-10 w-10 rounded-2xl bg-cyan-500"></div>
+                  <div>
+                    <p class="font-black">Painel Operacional</p>
+                    <p class="text-xs text-slate-300">visão geral do negócio</p>
                   </div>
                 </div>
-                <div class="panel">
-                  <div class="panel-head">Movimentações</div>
-                  <div class="transaction"><span>Ordem de serviço #001</span><span class="value-pos">+R$•••</span></div>
-                  <div class="transaction"><span>Despesa exemplo</span><span class="value-neg">-R$•••</span></div>
-                  <div class="donut-wrap"><div class="donut" aria-label="Gráfico financeiro"></div></div>
+                <div class="rounded-full bg-cyan-400 px-3 py-1 text-xs font-black text-slate-950">Ao vivo</div>
+              </div>
+              <div class="grid gap-3 p-4 sm:grid-cols-2">
+                <div class="rounded-3xl bg-white p-4 shadow-sm">
+                  <p class="text-xs font-bold text-slate-500">Clientes cadastrados</p>
+                  <p class="mt-2 text-3xl font-black">•••</p>
+                  <p class="mt-2 text-xs font-bold text-emerald-600">↗ crescimento no mês</p>
+                </div>
+                <div class="rounded-3xl bg-white p-4 shadow-sm">
+                  <p class="text-xs font-bold text-slate-500">Receita mensal</p>
+                  <p class="mt-2 text-3xl font-black">R$ •••••</p>
+                  <p class="mt-2 text-xs font-bold text-emerald-600">↗ vendas registradas</p>
+                </div>
+                <div class="rounded-3xl bg-white p-4 shadow-sm sm:col-span-2">
+                  <div class="flex items-center justify-between gap-4">
+                    <div>
+                      <p class="text-xs font-bold text-slate-500">Ordens de serviço</p>
+                      <p class="mt-2 text-xl font-black">Agendadas, em andamento e finalizadas</p>
+                    </div>
+                    <div class="grid h-16 w-16 place-items-center rounded-3xl bg-cyan-50 text-2xl">📋</div>
+                  </div>
+                  <div class="mt-4 space-y-3">
+                    <div class="flex items-center justify-between rounded-2xl bg-slate-50 p-3"><span class="font-bold">Cliente A</span><span class="rounded-full bg-cyan-100 px-3 py-1 text-xs font-black text-brand-800">Agendado</span></div>
+                    <div class="flex items-center justify-between rounded-2xl bg-slate-50 p-3"><span class="font-bold">Cliente B</span><span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-700">Finalizado</span></div>
+                    <div class="flex items-center justify-between rounded-2xl bg-slate-50 p-3"><span class="font-bold">Cliente C</span><span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-black text-amber-700">Em andamento</span></div>
+                  </div>
+                </div>
+                <div class="rounded-3xl bg-white p-4 shadow-sm sm:col-span-2">
+                  <p class="text-sm font-black">Pagamentos por forma</p>
+                  <div class="mt-4 grid items-center gap-5 sm:grid-cols-[180px_1fr]">
+                    <div class="mx-auto h-36 w-36 rounded-full bg-[conic-gradient(#16a34a_0_72%,#f59e0b_72%_84%,#06b6d4_84%_100%)] p-8">
+                      <div class="h-full w-full rounded-full bg-white"></div>
+                    </div>
+                    <div class="space-y-3 text-sm font-bold">
+                      <div class="flex justify-between rounded-2xl bg-slate-50 p-3"><span>PIX</span><span>••%</span></div>
+                      <div class="flex justify-between rounded-2xl bg-slate-50 p-3"><span>Dinheiro</span><span>••%</span></div>
+                      <div class="flex justify-between rounded-2xl bg-slate-50 p-3"><span>Cartão</span><span>••%</span></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -419,140 +193,200 @@
       </div>
     </section>
 
-    <section id="funcionalidades">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Funcionalidades principais</span>
-          <h2>Feito para a rotina real de empresas de limpeza de estofados.</h2>
-          <p>O sistema conecta agenda, clientes, serviços, ordens de serviço, pagamentos e relatórios para reduzir erros e melhorar o controle diário.</p>
+    <section id="modulos" class="px-5 py-16 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <span class="rounded-full bg-cyan-50 px-4 py-2 text-sm font-black text-brand-700">Módulos integrados</span>
+          <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">Tudo que a operação precisa em um só sistema</h2>
+          <p class="mt-5 text-lg text-slate-600">Cada etapa conversa com a outra: agendamento vira ordem de serviço, ordem finalizada gera receita, financeiro alimenta relatórios e o gestor acompanha tudo em tempo real.</p>
         </div>
-        <div class="features">
-          <article class="feature-card"><div class="feature-icon">▦</div><h3>Dashboard inteligente</h3><p>Indicadores do mês, agenda do dia, receitas, despesas, lucro líquido e movimentações recentes em uma tela executiva.</p></article>
-          <article class="feature-card"><div class="feature-icon">👥</div><h3>Clientes com histórico</h3><p>Cadastro completo com telefone, endereço, observações e histórico de atendimentos para vender novamente com facilidade.</p></article>
-          <article class="feature-card"><div class="feature-icon">📅</div><h3>Agenda profissional</h3><p>Visualização por dia, semana e mês, controle de status e prevenção de conflitos de horário para a equipe.</p></article>
-          <article class="feature-card"><div class="feature-icon">🧾</div><h3>Ordens de serviço</h3><p>Controle cada atendimento com serviços, quantidades, valores, forma de pagamento, status e observações.</p></article>
-          <article class="feature-card"><div class="feature-icon">💲</div><h3>Financeiro completo</h3><p>Receitas automáticas das OS finalizadas, despesas por categoria, saldo mensal e visão real do lucro.</p></article>
-          <article class="feature-card"><div class="feature-icon">📊</div><h3>Relatórios mensais</h3><p>Relatórios por mês com receitas, despesas, clientes novos, agendamentos, OS concluídas e exportação.</p></article>
-          <article class="feature-card"><div class="feature-icon">🔔</div><h3>Lembretes automáticos</h3><p>Aniversários de clientes e renovação de higienização após 6 meses para estimular recompra.</p></article>
-          <article class="feature-card"><div class="feature-icon">📱</div><h3>Acesso pelo celular</h3><p>Interface responsiva e opção de instalar como aplicativo no celular da equipe, sem loja de apps.</p></article>
-          <article class="feature-card"><div class="feature-icon">🔐</div><h3>Usuários e permissões</h3><p>Administrador com acesso total e funcionário com acesso restrito à operação, sem expor financeiro.</p></article>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <article class="reveal rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-50 text-2xl">📊</div>
+            <h3 class="mt-5 text-xl font-black">Dashboard inteligente</h3>
+            <p class="mt-3 text-slate-600">Indicadores do mês, agenda do dia, movimentações recentes, receita, despesas e lucro líquido em uma tela clara para decisão rápida.</p>
+          </article>
+          <article class="reveal rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-50 text-2xl">👥</div>
+            <h3 class="mt-5 text-xl font-black">Clientes e histórico</h3>
+            <p class="mt-3 text-slate-600">Base completa de clientes com contatos, endereço, observações, histórico de serviços e dados importantes para vender novamente.</p>
+          </article>
+          <article class="reveal rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-50 text-2xl">🗓️</div>
+            <h3 class="mt-5 text-xl font-black">Agenda profissional</h3>
+            <p class="mt-3 text-slate-600">Visualização por dia, semana e mês, controle de horários, status dos atendimentos e organização da equipe em campo.</p>
+          </article>
+          <article class="reveal rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-50 text-2xl">🧾</div>
+            <h3 class="mt-5 text-xl font-black">Ordens de serviço</h3>
+            <p class="mt-3 text-slate-600">Controle de serviços, quantidades, valores, descontos, status, pagamento e geração de orçamento profissional para o cliente.</p>
+          </article>
+          <article class="reveal rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-50 text-2xl">💰</div>
+            <h3 class="mt-5 text-xl font-black">Financeiro completo</h3>
+            <p class="mt-3 text-slate-600">Receitas automáticas, despesas manuais, categorias, lucro líquido, filtros por mês e visão clara do dinheiro que entra e sai.</p>
+          </article>
+          <article class="reveal rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-50 text-2xl">📈</div>
+            <h3 class="mt-5 text-xl font-black">Relatórios mensais</h3>
+            <p class="mt-3 text-slate-600">Relatórios por período com receitas, despesas, clientes novos, ordens concluídas, agendamentos e exportação para análise.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="demo-section" id="demonstracao">
-      <div class="container modules">
-        <div>
-          <span class="eyebrow">Conheça o sistema na prática</span>
-          <h2>Visual profissional para acompanhar clientes, equipe, serviços e resultados.</h2>
-          <p class="lead">As telas abaixo mostram uma simulação comercial da rotina do sistema, com informações ilustrativas para facilitar a apresentação das funcionalidades.</p>
-          <div class="module-list">
-            <div class="module"><div class="feature-icon">1</div><div><b>Agenda e atendimentos</b><span>Organize a rotina semanal da equipe com horários, status e serviços do dia.</span></div></div>
-            <div class="module"><div class="feature-icon">2</div><div><b>Clientes e histórico</b><span>Mantenha cada atendimento vinculado ao cadastro e histórico do cliente.</span></div></div>
-            <div class="module"><div class="feature-icon">3</div><div><b>Financeiro e relatórios</b><span>Acompanhe receitas, despesas, lucro líquido e relatórios mensais com clareza.</span></div></div>
+    <section id="funciona" class="bg-slate-950 px-5 py-16 text-white lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+          <div>
+            <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-black text-cyan-200">Fluxo operacional</span>
+            <h2 class="mt-5 text-3xl font-black tracking-tight sm:text-5xl">Da chamada no WhatsApp ao relatório do mês</h2>
           </div>
+          <p class="text-lg leading-8 text-slate-300">O sistema acompanha o ciclo completo do atendimento: cadastro, agendamento, execução, pagamento, financeiro e recompra. Tudo pensado para empresas que trabalham com sofá, colchão, tapete, cadeiras, veículos e móveis estofados.</p>
         </div>
-        <div class="screen-card">
-          <div class="screen-head">
-            <div><h3>Clientes</h3><div class="line-muted">Visão geral da base</div></div>
-            <div class="search">Buscar por nome, telefone ou e-mail...</div>
-          </div>
-          <div class="cards-grid">
-            <div class="client-card"><div class="top"><span class="avatar">A</span><div><b>Cliente 01</b><div class="line-muted">João Pessoa/PB</div></div></div><ul><li>📞 (83) 9••••-••••</li><li>✉️ cliente01@email.com</li><li>🧾 3 atendimentos</li></ul></div>
-            <div class="client-card"><div class="top"><span class="avatar">B</span><div><b>Cliente 02</b><div class="line-muted">Bayeux/PB</div></div></div><ul><li>📞 (83) 9••••-••••</li><li>✉️ cliente02@email.com</li><li>🧾 1 atendimento</li></ul></div>
-            <div class="client-card"><div class="top"><span class="avatar">C</span><div><b>Cliente 03</b><div class="line-muted">Cabedelo/PB</div></div></div><ul><li>📞 (83) 9••••-••••</li><li>✉️ cliente03@email.com</li><li>🧾 5 atendimentos</li></ul></div>
-            <div class="client-card"><div class="top"><span class="avatar">D</span><div><b>Cliente 04</b><div class="line-muted">Santa Rita/PB</div></div></div><ul><li>📞 (83) 9••••-••••</li><li>✉️ cliente04@email.com</li><li>🧾 2 atendimentos</li></ul></div>
-          </div>
-          <div class="safe-note">Apresentação visual com informações ilustrativas para simular a rotina de uma empresa de limpeza de estofados.</div>
-        </div>
-      </div>
-    </section>
 
-    <section id="fluxo">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Como funciona no dia a dia</span>
-          <h2>Do primeiro contato até o relatório mensal.</h2>
-          <p>Um fluxo simples para organizar operação, equipe e financeiro sem depender de controles manuais.</p>
-        </div>
-        <div class="process">
-          <div class="step"><h3>Cadastra o cliente</h3><p>Registre dados de contato, endereço e observações importantes do atendimento.</p></div>
-          <div class="step"><h3>Agenda o serviço</h3><p>Escolha data, horário, profissional, serviços e acompanhe o status do atendimento.</p></div>
-          <div class="step"><h3>Finaliza a OS</h3><p>Ao concluir o serviço, a receita pode entrar automaticamente no financeiro.</p></div>
-          <div class="step"><h3>Analisa o mês</h3><p>Veja lucro, despesas, formas de pagamento, clientes novos e ordens concluídas.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="pricing-card">
-          <div class="pricing-left">
-            <span class="eyebrow">Gestão profissional para crescer</span>
-            <h2>Transforme a rotina operacional em uma gestão mais rápida, organizada e lucrativa.</h2>
-            <p>Centralize sua operação em uma plataforma moderna, com agenda, clientes, ordens de serviço, financeiro e relatórios conectados.</p>
-            <ul class="checklist">
-              <li>Visual profissional e responsivo</li>
-              <li>Informações organizadas em tempo real</li>
-              <li>Benefícios claros para o gestor</li>
-              <li>Pronto para adaptar à realidade da empresa</li>
-            </ul>
+        <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div class="reveal rounded-[2rem] border border-white/10 bg-white/[.06] p-7">
+            <span class="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-400 font-black text-slate-950">1</span>
+            <h3 class="mt-5 text-xl font-black">Cliente solicita</h3>
+            <p class="mt-3 text-slate-300">A empresa registra os dados do cliente, endereço, serviço desejado e observações importantes.</p>
           </div>
-          <div class="pricing-right">
-            <h3>Para empresas que querem sair do improviso</h3>
-            <div class="price">ERP online</div>
-            <p>Agenda, clientes, OS, financeiro, relatórios e controle da equipe em uma plataforma simples de usar.</p>
-            <a class="btn" href="#contato">Quero uma demonstração</a>
+          <div class="reveal rounded-[2rem] border border-white/10 bg-white/[.06] p-7">
+            <span class="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-400 font-black text-slate-950">2</span>
+            <h3 class="mt-5 text-xl font-black">Agenda organiza</h3>
+            <p class="mt-3 text-slate-300">O atendimento entra na agenda com data, horário, profissional e status de acompanhamento.</p>
+          </div>
+          <div class="reveal rounded-[2rem] border border-white/10 bg-white/[.06] p-7">
+            <span class="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-400 font-black text-slate-950">3</span>
+            <h3 class="mt-5 text-xl font-black">OS controla</h3>
+            <p class="mt-3 text-slate-300">A ordem de serviço reúne serviços, quantidades, valores, pagamento e andamento da execução.</p>
+          </div>
+          <div class="reveal rounded-[2rem] border border-white/10 bg-white/[.06] p-7">
+            <span class="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-400 font-black text-slate-950">4</span>
+            <h3 class="mt-5 text-xl font-black">Gestão acompanha</h3>
+            <p class="mt-3 text-slate-300">O financeiro e os relatórios mostram resultado, margem, volume de serviços e oportunidades.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta" id="contato">
-      <div class="container">
-        <h2>Quer conhecer uma versão personalizada para sua empresa?</h2>
-        <p>Entre em contato para conhecer o sistema, adaptar serviços, permissões, relatórios e fluxo de atendimento conforme a realidade da sua operação.</p>
-        <div class="hero-actions" style="justify-content:center;margin-bottom:0">
-          <a class="btn btn-primary" href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20sistema%20ERP%20para%20limpeza%20de%20estofados." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-          <a class="btn btn-outline" href="mailto:contato@seudominio.com.br?subject=Demonstra%C3%A7%C3%A3o%20Higiene%20%26%20Cia%20ERP">Enviar e-mail</a>
+    <section id="beneficios" class="px-5 py-16 lg:px-8 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+        <div class="reveal">
+          <span class="rounded-full bg-emerald-50 px-4 py-2 text-sm font-black text-emerald-700">Benefícios reais</span>
+          <h2 class="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">Menos controle manual. Mais previsibilidade no negócio.</h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">A plataforma ajuda a reduzir erros, organizar a rotina da equipe e transformar informações soltas em decisões claras para crescimento.</p>
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm"><strong class="block text-lg font-black">Evita conflito de agenda</strong><span class="mt-2 block text-sm text-slate-600">Mais segurança na marcação dos horários.</span></div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm"><strong class="block text-lg font-black">Centraliza os dados</strong><span class="mt-2 block text-sm text-slate-600">Clientes, OS e financeiro no mesmo lugar.</span></div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm"><strong class="block text-lg font-black">Melhora a recompra</strong><span class="mt-2 block text-sm text-slate-600">Lembretes para abordar clientes antigos.</span></div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm"><strong class="block text-lg font-black">Aumenta a imagem profissional</strong><span class="mt-2 block text-sm text-slate-600">Orçamentos, relatórios e atendimento organizado.</span></div>
+          </div>
+        </div>
+
+        <div class="reveal rounded-[2rem] border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="rounded-[1.5rem] bg-slate-50 p-5">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <p class="text-sm font-black text-slate-500">Relatório mensal</p>
+                <h3 class="text-2xl font-black">Resumo gerencial</h3>
+              </div>
+              <button class="rounded-2xl bg-brand-600 px-4 py-3 text-sm font-black text-white">Exportar PDF</button>
+            </div>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3">
+              <div class="rounded-3xl bg-white p-4"><p class="text-xs font-bold text-slate-500">Receitas</p><p class="mt-2 text-2xl font-black text-emerald-600">R$ •••••</p></div>
+              <div class="rounded-3xl bg-white p-4"><p class="text-xs font-bold text-slate-500">Despesas</p><p class="mt-2 text-2xl font-black text-red-500">R$ ••••</p></div>
+              <div class="rounded-3xl bg-white p-4"><p class="text-xs font-bold text-slate-500">Lucro</p><p class="mt-2 text-2xl font-black text-slate-950">R$ •••••</p></div>
+            </div>
+            <div class="mt-5 overflow-hidden rounded-3xl border border-slate-200 bg-white">
+              <div class="grid grid-cols-4 bg-slate-100 px-4 py-3 text-xs font-black uppercase tracking-wide text-slate-500">
+                <span>Indicador</span><span>Mês</span><span>Status</span><span class="text-right">Resultado</span>
+              </div>
+              <div class="divide-y divide-slate-100 text-sm font-semibold">
+                <div class="grid grid-cols-4 items-center px-4 py-4"><span>OS concluídas</span><span>Atual</span><span class="text-emerald-600">Positivo</span><span class="text-right">••</span></div>
+                <div class="grid grid-cols-4 items-center px-4 py-4"><span>Clientes novos</span><span>Atual</span><span class="text-emerald-600">Crescimento</span><span class="text-right">••</span></div>
+                <div class="grid grid-cols-4 items-center px-4 py-4"><span>Agendamentos</span><span>Atual</span><span class="text-cyan-700">Em andamento</span><span class="text-right">••</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demonstracao" class="px-5 py-16 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl rounded-[2.5rem] bg-gradient-to-br from-brand-700 via-slate-950 to-slate-950 p-6 shadow-soft sm:p-10 lg:p-14">
+        <div class="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div class="reveal text-white">
+            <span class="rounded-full bg-white/10 px-4 py-2 text-sm font-black text-cyan-100">Demonstração comercial</span>
+            <h2 class="mt-5 text-3xl font-black tracking-tight sm:text-5xl">Mostre ao cliente uma solução moderna, visual e pronta para organizar a empresa.</h2>
+            <p class="mt-5 text-lg leading-8 text-cyan-50/80">Ideal para apresentar a donos de empresas de higienização que ainda usam caderno, planilhas ou controles separados. O foco é demonstrar profissionalismo, controle e ganho de produtividade.</p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20ERP." class="inline-flex justify-center rounded-2xl bg-white px-7 py-4 font-black text-slate-950 transition hover:-translate-y-1">Agendar demonstração</a>
+              <a href="#modulos" class="inline-flex justify-center rounded-2xl border border-white/20 px-7 py-4 font-black text-white transition hover:-translate-y-1 hover:bg-white/10">Rever módulos</a>
+            </div>
+          </div>
+          <div class="reveal grid gap-4 sm:grid-cols-2">
+            <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+              <p class="text-sm font-black text-slate-500">Para o dono</p>
+              <h3 class="mt-2 text-2xl font-black">Controle total</h3>
+              <p class="mt-3 text-slate-600">Visão financeira, agenda, relatórios, clientes e evolução da operação.</p>
+            </div>
+            <div class="rounded-[2rem] bg-white p-6 shadow-soft">
+              <p class="text-sm font-black text-slate-500">Para a equipe</p>
+              <h3 class="mt-2 text-2xl font-black">Rotina clara</h3>
+              <p class="mt-3 text-slate-600">Agenda do dia, serviços, endereço, status e acompanhamento do atendimento.</p>
+            </div>
+            <div class="rounded-[2rem] bg-white p-6 shadow-soft sm:col-span-2">
+              <p class="text-sm font-black text-slate-500">Para a empresa</p>
+              <h3 class="mt-2 text-2xl font-black">Mais profissionalismo na venda</h3>
+              <p class="mt-3 text-slate-600">Orçamentos organizados, histórico de clientes, lembrete de renovação e dados para aumentar faturamento.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <span>© 2026 Sistema para Limpeza de Estofados — Sistema profissional para limpeza de estofados.</span>
-      <span>Agenda, clientes, OS, financeiro e relatórios em um só lugar.</span>
+  <footer class="border-t border-slate-200 bg-white px-5 py-10 lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-3">
+        <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-cyan-400 to-brand-700 text-white">✦</div>
+        <div>
+          <strong class="block font-black">ERP para Empresas de Limpeza de Estofados</strong>
+          <span class="text-sm text-slate-500">Sistema online para empresas de limpeza de estofados</span>
+        </div>
+      </div>
+      <div class="text-sm font-semibold text-slate-500">Contato: <a class="text-brand-700 hover:underline" href="mailto:contato@seudominio.com.br">contato@seudominio.com.br</a></div>
     </div>
   </footer>
 
+  <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20ERP%20para%20limpeza%20de%20estofados." class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-4 text-sm font-black text-white shadow-soft transition hover:-translate-y-1 hover:bg-emerald-600" aria-label="Falar no WhatsApp">
+    <span class="text-lg">☎</span> WhatsApp
+  </a>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const revealTargets = document.querySelectorAll(
-        'section, .hero-copy, .hero-visual, .kpi, .mock-card, .feature-card, .module, .screen-card, .client-card, .step, .pricing-card'
-      );
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-      revealTargets.forEach(function (element, index) {
-        element.classList.add('reveal-up');
-        element.classList.add('reveal-delay-' + ((index % 4) + 1));
-      });
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
 
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.18,
-        rootMargin: '0px 0px -60px 0px'
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
 
-      revealTargets.forEach(function (element) {
-        observer.observe(element);
-      });
+    revealElements.forEach((el, index) => {
+      el.style.transitionDelay = `${Math.min(index % 6, 5) * 70}ms`;
+      observer.observe(el);
     });
   </script>
 </body>
